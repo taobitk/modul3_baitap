@@ -1,70 +1,74 @@
 CREATE DATABASE SS2_bai1;
 USE SS2_bai1;
 
-CREATE TABLE phieuxuat (
-    soPx INT PRIMARY KEY AUTO_INCREMENT,
-    ngayxuat DATETIME
+CREATE TABLE phieu_xuat (
+    so_px INT PRIMARY KEY,
+    ngay_xuat DATE
 );
 
-CREATE TABLE vattu (
-    mavtu INT PRIMARY KEY AUTO_INCREMENT,
-    tenvt VARCHAR(100)
+CREATE TABLE phieu_nhap (
+    so_pn INT PRIMARY KEY,
+    ngay_nhap DATE
 );
 
-CREATE TABLE chitietphiunhap (
-    phieuxuat_id INT,
-    vattu_id INT,
-    DGxuat INT,
-    SLxuat INT,
-    FOREIGN KEY (phieuxuat_id)
-        REFERENCES phieuxuat (soPx),
-    FOREIGN KEY (vattu_id)
-        REFERENCES vattu (mavtu),
-    PRIMARY KEY (phieuxuat_id, vattu_id)
+CREATE TABLE vat_tu (
+    ma_vtu INT PRIMARY KEY,
+    ten_vtu VARCHAR(80),
+    dg_nhap DECIMAL(10 , 2 ),
+    sl_nhap INT
 );
 
-CREATE TABLE phieunhap (
-    soPN INT PRIMARY KEY AUTO_INCREMENT,
-    NgayNhap DATETIME
+CREATE TABLE chi_tiet_phieu_xuat (
+    so_px INT,
+    ma_vtu INT,
+    sl_xuat INT,
+    PRIMARY KEY (so_px , ma_vtu),
+    FOREIGN KEY (so_px)
+        REFERENCES phieu_xuat (so_px),
+    FOREIGN KEY (ma_vtu)
+        REFERENCES vat_tu (ma_vtu)
 );
 
-CREATE TABLE chitietphieunhap (
-    soPN INT,
-    mavtu INT,
-    DGnhap INT,
-    SLnhap INT,
-    FOREIGN KEY (soPN)
-        REFERENCES phieunhap (soPN),
-    FOREIGN KEY (mavtu)
-        REFERENCES vattu (mavtu),
-    PRIMARY KEY (soPN, mavtu)
+CREATE TABLE chi_tiet_phieu_nhap (
+    so_pn INT,
+    ma_vtu INT,
+    sl_nhap INT,
+    PRIMARY KEY (so_pn , ma_vtu),
+    FOREIGN KEY (so_pn)
+        REFERENCES phieu_nhap (so_pn),
+    FOREIGN KEY (ma_vtu)
+        REFERENCES vat_tu (ma_vtu)
 );
 
-CREATE TABLE dondh (
-    sodh INT PRIMARY KEY AUTO_INCREMENT,
-    ngayDH DATETIME
+CREATE TABLE don_hang (
+    so_dh INT PRIMARY KEY,
+    ngay_dh DATE
 );
 
-CREATE TABLE chitietdonhang (
-    mavtu INT,
-    sodh INT,
-    PRIMARY KEY (mavtu, sodh),
-    FOREIGN KEY (mavtu)
-        REFERENCES vattu (mavtu),
-    FOREIGN KEY (sodh)
-        REFERENCES dondh (sodh)
+CREATE TABLE chi_tiet_don_hang (
+    so_dh INT,
+    ma_vtu INT,
+    sl_xuat INT,
+    PRIMARY KEY (so_dh , ma_vtu),
+    FOREIGN KEY (so_dh)
+        REFERENCES don_hang (so_dh),
+    FOREIGN KEY (ma_vtu)
+        REFERENCES vat_tu (ma_vtu)
 );
 
-CREATE TABLE nhacc (
-    mancc INT PRIMARY KEY AUTO_INCREMENT,
-    tenncc NVARCHAR(100),
-    diachi NVARCHAR(100)
+CREATE TABLE nha_cc (
+    ma_ncc INT PRIMARY KEY,
+    ten_ncc VARCHAR(80),
+    dia_chi VARCHAR(80),
+    sdt VARCHAR(20)
 );
 
-CREATE TABLE sdt (
-    number VARCHAR(15),
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nhacc_id INT,
-    FOREIGN KEY (nhacc_id)
-        REFERENCES nhacc (mancc)
+CREATE TABLE cung_cap (
+    ma_ncc INT,
+    ma_vtu INT,
+    PRIMARY KEY (ma_ncc , ma_vtu),
+    FOREIGN KEY (ma_ncc)
+        REFERENCES nha_cc (ma_ncc),
+    FOREIGN KEY (ma_vtu)
+        REFERENCES vat_tu (ma_vtu)
 );
