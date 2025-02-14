@@ -1,0 +1,162 @@
+CREATE DATABASE IF NOT EXISTS m3_c0924l1_jv103;
+USE m3_c0924l1_jv103;
+
+CREATE TABLE jame (
+ `account` VARCHAR(50) PRIMARY KEY,
+ `password` VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE class (
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ `name` VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE room (
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ `name` VARCHAR(50) NOT NULL,
+ class_id INT,
+ FOREIGN KEY (class_id) REFERENCES class(id) ON DELETE CASCADE
+);
+
+CREATE TABLE student (
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ `name` VARCHAR(50) NOT NULL,
+ gender ENUM('Male', 'Female') NOT NULL,
+ birthday DATE NOT NULL,
+ email VARCHAR(100) UNIQUE NOT NULL,
+ point DECIMAL(5,2) CHECK (point >= 0 AND point <= 10),
+ `account` VARCHAR(50) UNIQUE,
+ class_id INT,
+ FOREIGN KEY (`account`) REFERENCES jame(`account`) ON DELETE CASCADE,
+ FOREIGN KEY (class_id) REFERENCES class(id) ON DELETE SET NULL
+);
+
+CREATE TABLE instructor (
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ `name` VARCHAR(50) NOT NULL,
+ birthday DATE NOT NULL,
+ salary DECIMAL(10,2) CHECK (salary >= 0) NULL
+);
+
+CREATE TABLE instructor_class (
+ instructor_id INT,
+ class_id INT,
+ start_time DATE NULL,
+ end_time DATE NULL,
+ PRIMARY KEY (instructor_id, class_id),
+ FOREIGN KEY (instructor_id) REFERENCES instructor(id) ON DELETE CASCADE,
+ FOREIGN KEY (class_id) REFERENCES class(id) ON DELETE CASCADE
+);
+
+INSERT INTO jame (`account`, `password`) VALUES
+('cunn', '123'),
+('chunglh', '123'),
+('hoanhh', '123'),
+('dungd', '123'),
+('huynhtd', '123'),
+('hainm', '123'),
+('namtv', '123'),
+('hieuvm', '123'),
+('kynx', '123'),
+('vulm', '123');
+
+
+INSERT INTO class (`id`, `name`) VALUES
+(1, 'c1121g1'),
+(2, 'c1221g1'),
+(3, 'a0821i1'),
+(4, 'a0921i1');
+
+
+INSERT INTO room (`id`, `name`, `class_id`) VALUES
+(1, 'Ken', 1),
+(2, 'Jam', 1),
+(3, 'Ada', 2),
+(4, 'Jimmy', 2);
+
+
+INSERT INTO student (`id`, `name`, `gender`, `birthday`, `email`, `point`, `account`, `class_id`) VALUES
+(1, 'nguyen ngoc cu', 1, '1981-12-12', 'cunn@gmail.com', 8, 'cunn', 1),
+(2, 'le hai chung', 1, '1981-12-12', 'chunglh@gmail.com', 5, 'chunglh', 1),
+(3, 'hoang huu hoan', 1, '1990-12-12', 'hoanhh@gmail.com', 6, 'hoanhh', 2),
+(4, 'dau dung', 1, '1987-12-12', 'dungd@gmail.com', 8, 'dungd', 1),
+(5, 'ta dinh huynh', 1, '1987-12-12', 'huynhtd@gmail.com', 7, 'huynhtd', 2),
+(6, 'nguyen minh hai', 1, '1987-12-12', 'hainm@gmail.com', 7, 'hainm', 2),
+(7, 'tran van nam', 1, '1989-12-12', 'namtv@gmail.com', 4, 'namtv', 1),
+(8, 'vo minh hieu', 1, '1981-12-12', 'hieuvm@gmail.com', 3, 'hieuvm', 1),
+(9, 'le xuan ky', 1, '1981-12-12', 'kykyl@gmail.com', 7, 'kynx', 1),
+(10, 'le minh vu', 1, '1981-12-12', 'vu@gmail.com', 7, 'vulm', 1),
+(11, 'nguyen van a', 1, '1981-12-12', 'anv@gmail.com', 8, NULL, NULL),
+(12, 'tran van b', 1, '1981-12-12', 'btv@gmail.com', 5, NULL, NULL);
+
+
+INSERT INTO instructor (`id`, `name`, `birthday`, `salary`) VALUES
+(1, 'tran van chanh', '1985-02-03', NULL),
+(2, 'tran minh chien', '1985-02-03', NULL),
+(3, 'vu thanh tien', '1985-02-03', NULL),
+(4, 'tran van nam', '1989-12-12', NULL);
+
+
+INSERT INTO instructor_class (`instructor_id`, `class_id`, `start_time`, `end_time`) VALUES
+(1, 1, NULL, NULL),
+(1, 2, NULL, NULL),
+(1, 3, NULL, NULL),
+(2, 1, NULL, NULL),
+(2, 3, NULL, NULL);
+
+ -- Câu 1: Lấy ra thông tin các học viên, và cho biết các học viên đang theo học lớp nào?
+SELECT s.*, c.name AS class_name
+FROM student s
+JOIN class c ON s.class_id = c.id;
+
+-- Câu 2: Lấy ra thông tin các học viên, và cho biết các học viên đang theo học lớp nào và cả các bạn đã đăng ký nhưng chưa có lớp học?
+SELECT s.*, c.name AS class_name
+FROM student s
+LEFT JOIN class c ON s.class_id = c.id;
+
+-- Câu 3: Lấy thông tin của các học viên tên 'nguyen minh hai'?
+SELECT * FROM student
+WHERE name = 'nguyen minh hai';
+
+-- Câu 4: Lấy ra học viên có họ là “nguyen”
+SELECT * FROM student
+WHERE name LIKE 'nguyen%';
+
+-- Câu 5: Lấy thông tin của các học viên tên 'hai' hoặc 'huynh’.
+SELECT * FROM student
+WHERE name LIKE '% hai' OR name LIKE '% huynh';
+
+-- Câu 6: Lấy ra các học viên có điểm lớn hơn 5
+SELECT * FROM student
+WHERE point > 5;
+
+-- Câu 7: Lấy ra thông tin các học viên có điểm 4, 6, 8
+SELECT * FROM student
+WHERE point IN (4, 6, 8);
+
+-- Câu 8: Thống kê số lượng học sinh theo từng loại điểm.
+SELECT point, COUNT(*) AS total_students
+FROM student
+GROUP BY point;
+
+-- Câu 9: Thống kê số lượng học sinh theo điểm và điểm phải lớn hơn 5
+SELECT point, COUNT(*) AS total_students
+FROM student
+WHERE point > 5
+GROUP BY point;
+
+-- Câu 10: Thống kê số lượng học sinh theo điểm lớn hơn 5 và chỉ hiển thị với số lượng >= 2
+SELECT point, COUNT(*) AS total_students
+FROM student
+WHERE point > 5
+GROUP BY point
+HAVING COUNT(*) >= 2;
+
+-- Câu 11: Lấy ra danh sách học viên của lớp c1121g1 và sắp xếp học viên theo point giảm dần
+SELECT s.*
+FROM student s
+JOIN class c ON s.class_id = c.id
+WHERE c.name = 'c1121g1'
+ORDER BY s.point DESC;
+
+ 
