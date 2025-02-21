@@ -8,7 +8,7 @@ select * from nhan_vien
 where ho_ten like 'H%' 
 or ho_ten like 'T%' 
 or ho_ten like 'K%' 
-AND LENGTH(ho_ten) <= 15; ;
+AND LENGTH(ho_ten) <= 15; 
 
 
 -- 3.	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
@@ -57,7 +57,8 @@ ORDER BY
 
 
 -- 6.	Hiển thị ma_dich_vu, ten_dich_vu, dien_tich, chi_phi_thue, ten_loai_dich_vu
---  của tất cả các loại dịch vụ chưa từng được khách hàng thực hiện đặt từ quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3). để tạm đó 
+--  của tất cả các loại dịch vụ chưa từng được khách hàng thực hiện đặt từ quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3). 
+-- để tạm đó 
 SELECT 
     dv.ma_dich_vu, 
     dv.ten_dich_vu, 
@@ -72,13 +73,15 @@ JOIN
     hop_dong hd ON dv.ma_dich_vu = hd.ma_dich_vu
 WHERE 
     (hd.ma_hop_dong IS NULL OR (YEAR(hd.ngay_lam_hop_dong) < 2021 OR MONTH(hd.ngay_lam_hop_dong) NOT IN (1, 2, 3)))
-group by ma_dich_vu
+group by 
+	ma_dich_vu
 ORDER BY 
-    dv.ma_dich_vu
+    dv.ma_dich_vu;
     
     
 -- 7.	Hiển thị thông tin ma_dich_vu, ten_dich_vu, dien_tich, so_nguoi_toi_da, chi_phi_thue, ten_loai_dich_vu
 -- của tất cả các loại dịch vụ đã từng được khách hàng đặt phòng trong năm 2020 nhưng chưa từng được khách hàng đặt phòng trong năm 2021.
+
 SELECT 
     dv.ma_dich_vu, 
     dv.ten_dich_vu, 
@@ -100,7 +103,8 @@ WHERE
         WHERE hd2.ma_dich_vu = dv.ma_dich_vu
         AND YEAR(hd2.ngay_lam_hop_dong) = 2021
     )
-group by ma_dich_vu
+group by
+	ma_dich_vu
 ORDER BY 
     dv.ma_dich_vu;
     
@@ -113,11 +117,8 @@ FROM khach_hang;
 SELECT ho_ten
 FROM khach_hang
 GROUP BY ho_ten;
--- Cách 3: Sử dụng LEFT JOIN với chính bảng khach_hang
-SELECT k1.ho_ten
-FROM khach_hang k1
-LEFT JOIN khach_hang k2 ON k1.ho_ten = k2.ho_ten AND k1.ma_khach_hang != k2.ma_khach_hang
-WHERE k2.ma_khach_hang IS NULL;
+
+
 
 -- 9.	Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
 	SELECT 
