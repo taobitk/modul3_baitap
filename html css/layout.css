@@ -30,7 +30,6 @@ body {
     overflow: hidden;
 }
 
-/* Header Styles */
 header {
     background-color: #333;
     color: #fff;
@@ -130,7 +129,7 @@ main {
     border: 1px solid #ccc;
 }
 
-/* Footer Styles */
+
 footer {
     background-color: #333;
     color: #fff;
