@@ -1,0 +1,140 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+.site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-content {
+    flex: 1;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    border-bottom: 4px solid #5cb85c;
+}
+
+.logo {
+    float: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav {
+    float: left;
+    margin-left: 2rem;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem;
+    display: block;
+}
+
+nav a:hover {
+    background-color: #5cb85c;
+}
+
+.login {
+    float: right;
+}
+
+.login a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: #5cb85c;
+    border-radius: 5px;
+    display: block;
+}
+.login a:hover{
+    background-color:#3e8e41;
+}
+
+main {
+
+}
+
+.sidebar {
+    width: 20%;
+    float: left;
+}
+.sidebar ul {
+    list-style: none;
+
+}
+.sidebar li {
+}
+.sidebar a {
+    display: block;
+    padding:0.5rem;
+    color:#333;
+    text-decoration:none;
+
+}
+
+.sidebar a:hover{
+    background-color:#ddd;
+    border-left: 4px solid #5cb85c;
+}
+.content {
+    width: 55%;
+    float: left;
+    padding: 0 2rem;
+}
+
+.ads {
+    width: 20%;
+    float: right;
+    text-align: center;
+}
+
+.ads div {
+    background-color: #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 4px solid #5cb85c;
+}
