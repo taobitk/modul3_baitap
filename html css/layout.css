@@ -106,10 +106,6 @@ main {
 
 }
 
-.sidebar a:hover{
-    background-color:#ddd;
-    border-left: 4px solid #5cb85c;
-}
 .content {
     width: 55%;
     float: left;
