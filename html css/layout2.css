@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 1200px;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #f4f4f4;
+    border-top: 1px solid silver;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.logo span {
+    color: red;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    padding: 0 15px;
+}
+
+.divider {
+    border-right: 1px solid #ccc;
+    margin: 0 10px;
+}
+
+.content {
+    display: flex;
+    gap: 20px;
+}
+
+.image-list {
+    flex: 1;
+}
+
+.image-item {
+    margin-bottom: 20px;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.image-item .title {
+    color: black;
+    margin-top: 5px;
+}
+
+.image-item .channel {
+    color: silver;
+    margin-top: 5px;
+}
+
+.slogan {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.slogan img {
+    width: 100%;
+    height: auto;
+    max-width: 550px;
+    height: 360px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.slogan .title {
+    color: black;
+    margin-top: 5px;
+}
+
+.slogan .author {
+    color: silver;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.slogan .description {
+    color: silver;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.view-count {
+    color: silver;
+    text-decoration: none;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
