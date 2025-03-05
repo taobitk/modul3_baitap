@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Surface</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Hero Section Styles */
+        .hero {
+            background-color: #f8f9fa; /* Light background */
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .hero h1{
+            font-size: 3.5rem; /* Make it even larger */
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #0056b3; /* A shade of blue */
+        }
+        .hero-image{
+            width:100%;
+            height: 500px;
+            margin-top: 20px;
+
+        }
+
+        /* Meet the Family Section */
+        .meet-the-family {
+            padding: 3rem 0;
+            text-align: center; /* Center-align text */
+            background-color: #f8f9fa; /* Light grey background */
+
+        }
+
+        .meet-the-family h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .family-cards {
+            display: flex;
+            flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+            justify-content: space-around; /* Space out the cards */
+            margin-top: 2rem;
+        }
+        .family-card {
+            width: 30%; /* Adjust as needed for different screen sizes */
+            margin-bottom: 1.5rem; /* Add some spacing between rows */
+            /*background-color: #f8f9fa;  Remove background color */
+            border: none;  /* Remove border */
+            border-radius: 0; /*Remove border radius */
+            padding:0px; /*Remove padding */
+
+        }
+
+        .family-card img {
+            width: 100%;
+            height: auto;
+            /* border-bottom: 1px solid #dee2e6;  Optional: Remove border below image*/
+            margin-bottom: 1rem;
+            aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+            object-fit: cover; /* Important: prevent stretching */
+        }
+        .family-card-content{
+            text-align: left;
+        }
+        .meet-the-family .btn{
+            border-radius: 0px;
+            padding: 3px;
+            font-size: 13px;
+            border-width: 2px;
+
+        }
+
+        /* Adjustments for smaller screens */
+        @media (max-width: 992px) { /* Use Bootstrap's breakpoint */
+            .family-card {
+                width: 48%; /* 2 columns on medium screens */
+            }
+        }
+        @media (max-width: 768px) {
+            .family-card {
+                width: 95%; /* Full width on smaller screens */
+
+            }
+            .meet-the-family{
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="https://via.placeholder.com/150x30?text=Microsoft+Logo" alt="Microsoft Logo" width="150" height="30">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="surfaceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Surface
+                </a>
+                <div class="dropdown-menu" aria-labelledby="surfaceDropdown">
+                    <a class="dropdown-item" href="#">Surface Pro</a>
+                    <a class="dropdown-item" href="#">Surface Laptop</a>
+                    <a class="dropdown-item" href="#">Surface Go</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="computersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Computers
+                </a>
+                <div class="dropdown-menu" aria-labelledby="computersDropdown">
+                    <a class="dropdown-item" href="#">Laptops</a>
+                    <a class="dropdown-item" href="#">Desktops</a>
+                    <a class="dropdown-item" href="#">2-in-1s</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="businessDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Computers for Business
+                </a>
+                <div class="dropdown-menu" aria-labelledby="businessDropdown">
+                    <a class="dropdown-item" href="#">Surface for Business</a>
+                    <a class="dropdown-item" href="#">Business Solutions</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="accessoriesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Accessories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="accessoriesDropdown">
+                    <a class="dropdown-item" href="#">Mice</a>
+                    <a class="dropdown-item" href="#">Keyboards</a>
+                    <a class="dropdown-item" href="#">Headphones</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Shop now</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Support</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="allMicrosoftDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    All Microsoft
+                </a>
+                <div class="dropdown-menu" aria-labelledby="allMicrosoftDropdown">
+                    <a class="dropdown-item" href="#">Software</a>
+                    <a class="dropdown-item" href="#">PCs & Devices</a>
+                    <a class="dropdown-item" href="#">Entertainment</a>
+                    <a class="dropdown-item" href="#">Business</a>
+                    <a class="dropdown-item" href="#">Developer & IT</a>
+                    <a class="dropdown-item" href="#">Other</a>
+
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Search <i class="fas fa-search"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Cart <i class="fas fa-shopping-cart"></i></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Sign in <i class="fas fa-user-plus"></i></a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Copilot+PC</h1>
+    <h2>Join the era of AI</h2>
+    <p>Meet the ultimate Copilot+ PCs from Microsoft Surface, powered by Snapdragon® X Elite Plus processors.</p>
+    <button class="btn btn-primary mr-2">Explore Surface Pro</button>
+    <button class="btn btn-primary">Explore Surface Laptop</button>
+
+    <div class="hero-image">
+        <img src="https://via.placeholder.com/1200x500?text=Hero+Image" alt="Hero Placeholder Image">
+    </div>
+</section>
+
+<section class="meet-the-family">
+    <h2>Meet the family</h2>
+    <a class="btn btn-outline-primary" href="#">Compare Surface computers</a>
+
+
+    <div class="family-cards">
+        <div class="family-card">
+            <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/surface-pro-11th-edition-sapphire-surface-pro-flex-keyboard-sapphire?fmt=png-alpha&scl=1" alt="Surface 2-in-1">
+            <div class="family-card-content">
+                <h3>Surface 2-in-1 PCs</h3>
+                <p>Power, adaptability, and flexibility—this is Surface Pro.</p>
+                <a href="#">Explore Surface 2-in-1 PCs ></a>
+            </div>
+        </div>
+
+        <div class="family-card">
+            <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/surface-laptop-7th-edition-13-sapphire?fmt=png-alpha&scl=1" alt="Surface Laptop">
+            <div class="family-card-content">
+                <h3>Surface Laptops</h3>
+                <p>Style, speed, and power in ultra-premium Surface laptop designs.</p>
+                <a href="#">See all Surface laptops ></a>
+            </div>
+
+        </div>
+        <div class="family-card">
+            <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/surface-home-color-keyboard-family?fmt=png-alpha&scl=1" alt="Surface for you">
+            <div class="family-card-content">
+                <h3>Find the Surface for you</h3>
+                <p>Answer a few short questions and we'll recommend the perfect Surface.</p>
+                <a href="#">Get started ></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
