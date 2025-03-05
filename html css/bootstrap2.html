@@ -7,21 +7,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Hero Section Styles */
+      
         .hero {
-            background-color: #f8f9fa; /* Light background */
+            background-color: #f8f9fa;
             text-align: center;
             padding: 4rem 2rem;
         }
         .hero h1{
-            font-size: 3.5rem; /* Make it even larger */
+            font-size: 3.5rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
         .hero h2 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: #0056b3; /* A shade of blue */
+            color: #0056b3;
         }
         .hero-image{
             width:100%;
@@ -30,11 +30,11 @@
 
         }
 
-        /* Meet the Family Section */
+
         .meet-the-family {
             padding: 3rem 0;
-            text-align: center; /* Center-align text */
-            background-color: #f8f9fa; /* Light grey background */
+            text-align: center;
+            background-color: #f8f9fa;
 
         }
 
@@ -46,27 +46,26 @@
 
         .family-cards {
             display: flex;
-            flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
-            justify-content: space-around; /* Space out the cards */
+            flex-wrap: wrap;
+            justify-content: space-around;
             margin-top: 2rem;
         }
         .family-card {
-            width: 30%; /* Adjust as needed for different screen sizes */
-            margin-bottom: 1.5rem; /* Add some spacing between rows */
-            /*background-color: #f8f9fa;  Remove background color */
-            border: none;  /* Remove border */
-            border-radius: 0; /*Remove border radius */
-            padding:0px; /*Remove padding */
+            width: 30%;
+            margin-bottom: 1.5rem;
+
+            border: none;
+            border-radius: 0;
+            padding:0px;
 
         }
 
         .family-card img {
             width: 100%;
             height: auto;
-            /* border-bottom: 1px solid #dee2e6;  Optional: Remove border below image*/
             margin-bottom: 1rem;
-            aspect-ratio: 4 / 3; /* Maintain aspect ratio */
-            object-fit: cover; /* Important: prevent stretching */
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
         }
         .family-card-content{
             text-align: left;
@@ -79,15 +78,14 @@
 
         }
 
-        /* Adjustments for smaller screens */
-        @media (max-width: 992px) { /* Use Bootstrap's breakpoint */
+        @media (max-width: 992px) {
             .family-card {
-                width: 48%; /* 2 columns on medium screens */
+                width: 48%;
             }
         }
         @media (max-width: 768px) {
             .family-card {
-                width: 95%; /* Full width on smaller screens */
+                width: 95%;
 
             }
             .meet-the-family{
